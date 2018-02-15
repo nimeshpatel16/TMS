@@ -7,7 +7,7 @@
     <ProjectGuid>{414E44D2-8FDB-4434-836F-EFB88F61D70E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>_01_TMS.DataTransferObject</RootNamespace>
+    <RootNamespace>TMS.DataTransferObject</RootNamespace>
     <AssemblyName>01-TMS.DataTransferObject</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

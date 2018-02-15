@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace MLM.BusinessLayer
+namespace TMS.DataTransferObject
 {
     public class DTOLeaveMaster
     {
@@ -16,7 +16,7 @@ namespace MLM.BusinessLayer
 
         public Int32 LeaveId { get; set; }
         public Int32 ResourceID { get; set; }
-        public Int32 ProjectID { get; set; }    //kajal.trivedi(1/6/2015)
+        public Int32 ProjectID { get; set; }    
         public string ResourceName { get; set; }
         public string Title { get; set; }
         public DateTime StartDate { get; set; }
