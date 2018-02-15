@@ -1,0 +1,50 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+namespace MLM.BusinessLayer
+{
+    public class DTOLeaveMaster
+    {
+        public DTOLeaveMaster()
+        {
+        }
+
+        public Int32 LeaveId { get; set; }
+        public Int32 ResourceID { get; set; }
+        public Int32 ProjectID { get; set; }    //kajal.trivedi(1/6/2015)
+        public string ResourceName { get; set; }
+        public string Title { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+        public bool IsStartHalf { get; set; }
+        public bool IsEndHalf { get; set; }
+        public string Reason { get; set; }
+        public Int32 LeaveType { get; set; }
+        public string LeaveTypeDescription { get; set; }
+        public Decimal AppliedLeaveCount { get; set; }
+        public Decimal LeaveBalance { get; set; }
+        public Decimal Balance { get; set; }
+        public int Status { get; set; }
+
+        public string EmailToHR { get; set; }
+        public string EmailToEmp { get; set; }
+        public string StatusName { get; set; }
+        public string Comment { get; set; }
+        public string Description { get; set; }
+        public Int64 CreatedBy { get; set; }
+        public DateTime CreatedDate { get; set; }
+        public Int64 LastModifiedBy { get; set; }
+        public string LastModifiedByName { get; set; }
+        public DateTime LastModifiedDate { get; set; }
+        public Nullable<Int32> Search_PageIndex { get; set; }
+        public Nullable<Int32> Search_PageSize { get; set; }
+        public Nullable<Int32> TotalRowCount { get; set; }
+        public List<DTOLeaveMaster> lstLeaveMaster { get; set; }
+        public List<DTOResource> lstResource { get; set; }
+    }
+}
