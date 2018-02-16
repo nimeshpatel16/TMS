@@ -4,12 +4,6 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
-    @*@RenderSection("head", false)*@
-    @*<meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">*@
     <title>Task Management System</title>
     <!-- Bootstrap core CSS-->
     <link href="~/Content/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
@@ -23,37 +17,16 @@
 
     <link href="~/Content/css/sb-admin.css" rel="stylesheet" />
 
-    <script src="~/Scripts/jquery-ui-1.12.1.js"></script>
 
-    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
 
-    @*@Scripts.Render("~/bundles/jqueryui")*@
-    @*@Styles.Render("~/Content/cssjqryUi")
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/jqueryval")
-    @Scripts.Render("~/bundles/chartJS")
-
-    @Scripts.Render("~/bundles/jqueryui")*@
-    @Styles.Render("~/Content/css")
-    @Styles.Render("~/Content/jqueryui")
-    @Scripts.Render("~/bundles/modernizr")
-
-</ head >
+</head>
 <body>
-    @*<div>
-            @Html.ActionLink("Home", "Index", "Home") |
-            @Html.ActionLink("About", "About", "Home") |
-            @Html.ActionLink("Contact", "Contact", "Home") |
-            @Html.ActionLink("Leaves", "Create", "Leave")
-
-        </div>*@
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
         <a class="navbar-brand" href="index.html">Task Management System</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
@@ -69,7 +42,7 @@
                     </a>
                     <ul class="sidenav-second-level collapse" id="collapseLeave">
                         <li>
-                           @Html.ActionLink("Leaves", "Create", "Leave")
+                            @Html.ActionLink("Leaves", "Create", "Leave")
                         </li>
                     </ul>
                 </li>
@@ -98,11 +71,11 @@
         </div>
     </nav>
     <div class="content-wrapper">
-        <div>
-            @RenderBody()
-        </div>
-        
 
+        <div class="container body-content">
+            @RenderBody()
+
+        </div>
         <!-- /.container-fluid-->
         <!-- /.content-wrapper-->
         <footer class="sticky-footer">
@@ -142,18 +115,25 @@
         <script src="~/Content/js/sb-admin-charts.min.js"></script>
 
     </div>
-    
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Styles.Render("~/Content/jqueryui")
+    @RenderSection("scripts", required: false)
 </body>
 </html>
-@Scripts.Render("~/bundles/jquery")
-@Scripts.Render("~/bundles/bootstrap")
+
+
 @Scripts.Render("~/bundles/jqueryui")
 <script type="text/javascript" lang="javascript">
     $(function () {
         $('.ui-datepicker-calendar').datepicker({
-            dateFormat:'yy-mm-dd'
+            dateFormat: 'yy-mm-dd',
+            showButtonPanel: true,
+            changeMonth: true,
+            changeYear: true,
+            showOtherMonths: true,
+            selectOtherMonths: true
         })
     });
 
 </script>
-

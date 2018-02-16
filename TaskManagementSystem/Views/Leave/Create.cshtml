@@ -2,49 +2,49 @@
 
 @{
     ViewBag.Title = "Create";
-    Layout = "~/Views/Shared/_LayoutPage11.cshtml";
-   
+    Layout = "~/Views/Shared/_DashboardLayoutPage.cshtml";
+
 }
 
 <h2>Create</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="container">
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h4>Apply Leave</h4>
-        <hr />
+                <hr />
             </div>
             <div class="panel-body">
-        <div class="form-group">
+                <div class="form-group">
                     <div class="row">
-                        <label class="control-label col-md-2 text-right">User Name :</label>
-            <div class="col-md-10">
+                        <label class="control-label col-md-2 text-left">User Name :</label>
+                        <div class="col-md-10">
                             @Html.TextBoxFor(m => m.Title, "", new { @class = "form-control", id = "txtName", maxlength = "100" })
-            </div>
-        </div>
-            </div>
-        <div class="form-group">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
                     <div class="row">
-                        <label class="control-label col-md-2 text-right">Leave Type :</label>
-            <div class="col-md-10">
+                        <label class="control-label col-md-2 text-left">Leave Type :</label>
+                        <div class="col-md-10">
                             @Html.DropDownList("ddlLeaveType", new List<SelectListItem>
                                         {
                                         new SelectListItem{ Text="Personal", Value = "1" },
                                         new SelectListItem{ Text="Official", Value = "2" },
                                         }, new { @class = "selectpicker form-control" })
-            </div>
-        </div>
-            </div>
-        <div class="form-group">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
                     <div class="row">
-                        <label class="control-label col-md-2 text-right">Start Date :</label>
+                        <label class="control-label col-md-2 text-left">Start Date :</label>
                         <div class="col-md-5">
                             @Html.TextBoxFor(m => m.Title, "", new { @class = "form-control ui-datepicker-calendar", id = "datepicker", maxlength = "100", @readonly = true })
-            </div>
+                        </div>
                         <div class="col-md-5">
                             @Html.DropDownList("ddlStartDate", new List<SelectListItem>
                                             {
@@ -52,15 +52,15 @@
                                             new SelectListItem{ Text="1st Half", Value = "2" },
                                             new SelectListItem{ Text="2nd Half", Value = "3" },
                                             }, new { @class = "selectpicker form-control" })
-        </div>
-            </div>
-        </div>
-        <div class="form-group">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
                     <div class="row">
-                        <label class="control-label col-md-2 text-right">End Date :</label>
+                        <label class="control-label col-md-2 text-left">End Date :</label>
                         <div class="col-md-5">
                             @Html.TextBoxFor(m => m.Title, "", new { @class = "form-control ui-datepicker-calendar", id = "txtEndDate", maxlength = "100", @readonly = true })
-        </div>
+                        </div>
                         <div class="col-md-5">
 
                             @Html.DropDownList("ddlEndDate", new List<SelectListItem>
@@ -69,38 +69,40 @@
                                             new SelectListItem{ Text="1st Half", Value = "2" },
                                             new SelectListItem{ Text="2nd Half", Value = "3" },
                                             }, new { @class = "selectpicker form-control" })
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="form-group">
+                <div class="form-group">
                     <div class="row">
-                        <label class="control-label col-md-2 text-right">Reason For Leave:</label>
-            <div class="col-md-10">
+                        <label class="control-label col-md-2 text-left">Reason For Leave:</label>
+                        <div class="col-md-10">
                             @Html.TextBoxFor(m => m.Title, "", new { @class = "form-control", id = "txttitle", maxlength = "100" })
-        </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <div>
+
+
+
+                        <button type="button" class="btn btn-primary right">Submit</button> &nbsp;
+                        <button type="button" class="btn btn-primary right">Cancel</button>
+
+
+                    </div>
+                </div>
+
+
+
+
             </div>
         </div>
-        <div class="form-group">
-                    <div class="row">
-                        <label class="control-label col-md-10"></label>
 
-                        <div class="col-md-2">
-                            <button type="button" class="btn btn-primary right">Submit</button>
-                            <button type="button" class="btn btn-primary right">Cancel</button>
-            </div>
-
-            </div>
-        </div>
-
-
-
-
-            </div>
-        </div>
-
-        </div>
+    </div>
 }
 
 @*<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>*@
+        @Html.ActionLink("Back to List", "Index")
+    </div>*@
