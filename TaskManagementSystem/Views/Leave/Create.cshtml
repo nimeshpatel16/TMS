@@ -43,7 +43,7 @@
                     <div class="row">
                         <label class="control-label col-md-2 text-right">Start Date :</label>
                         <div class="col-md-5">
-                            @Html.TextBoxFor(m => m.Title, "", new { @class = "form-control", id = "datepicker", maxlength = "100" })
+                            @Html.TextBoxFor(m => m.Title, "", new { @class = "form-control ui-datepicker-calendar", id = "datepicker", maxlength = "100", @readonly = true })
             </div>
                         <div class="col-md-5">
                             @Html.DropDownList("ddlStartDate", new List<SelectListItem>
@@ -59,7 +59,7 @@
                     <div class="row">
                         <label class="control-label col-md-2 text-right">End Date :</label>
                         <div class="col-md-5">
-                            @Html.TextBoxFor(m => m.Title, "", new { @class = "form-control", id = "txtEndDate", maxlength = "100" })
+                            @Html.TextBoxFor(m => m.Title, "", new { @class = "form-control ui-datepicker-calendar", id = "txtEndDate", maxlength = "100", @readonly = true })
         </div>
                         <div class="col-md-5">
 
