@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.ComponentModel.DataAnnotations;
-namespace TaskManagementSystem.Models
+namespace TaskManagementSystem.Models.CustomClass
 {
     public class LeaveModel
     {
@@ -41,6 +41,5 @@ namespace TaskManagementSystem.Models
         public Nullable<Int32> Search_PageIndex { get; set; }
         public Nullable<Int32> Search_PageSize { get; set; }
         public Nullable<Int32> TotalRowCount { get; set; }
-        public List<DTOResource> lstResource { get; set; }
     }
 }

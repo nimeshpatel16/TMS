@@ -204,6 +204,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\CustomClass\Class1.cs" />
     <Compile Include="Models\CustomClass\ResourceModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\CustomClass\LeaveModel.cs" />
@@ -424,7 +425,6 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Leave\Create.cshtml" />
     <Content Include="Views\Shared\_DashboardLayoutPage.cshtml" />
-    <Content Include="Views\Leave\ViewTestModel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

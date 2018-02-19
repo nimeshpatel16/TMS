@@ -1,4 +1,4 @@
-﻿@model TMS.DataTransferObject.DTOLeaveMaster
+﻿@model TaskManagementSystem.Models.CustomClass.LeaveModel
 
 @{
     ViewBag.Title = "Create";
@@ -8,7 +8,7 @@
 
 <h2>Create</h2>
 
-@using (Html.BeginForm("SaveData","Leave",FormMethod.Post))
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
@@ -88,10 +88,11 @@
                     <div>
 
 
-                        <input type="submit" class="btn btn-primary right" value="Submit"/>
+                        @*<input type="submit" class="btn btn-primary right" value="Submit"/>
                         @*<button type="button" class="btn btn-primary right">Submit</button> &nbsp;*@
-                        <button type="button" class="btn btn-primary right">Cancel</button>
-
+                        @*<button type="button" class="btn btn-primary right">Cancel</button>*@
+                        <input type="submit" value="Create" class="btn btn-primary" formaction="SaveData" formmethod="post" />
+                        <input type="submit" value="Clear" class="btn btn-primary" formaction="ClearData" formmethod="post" />
 
                     </div>
                 </div>

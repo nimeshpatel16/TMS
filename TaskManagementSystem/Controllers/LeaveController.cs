@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using TMS.DataTransferObject;
 using TMS.DataAccessLayer;
-using TaskManagementSystem.Models;
+using TaskManagementSystem.Models.CustomClass;
 
 namespace TaskManagementSystem.Controllers
 {
@@ -29,11 +28,7 @@ namespace TaskManagementSystem.Controllers
         {
             return View();
         }
-        // GET: Leave/Create
-        public ActionResult ViewTestModel()
-        {
-            return View();
-        }
+      
         [HttpPost]
         [ActionName("ClearData")]
         public ActionResult ClearData(LeaveModel model)
