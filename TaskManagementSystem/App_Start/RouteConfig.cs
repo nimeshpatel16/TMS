@@ -15,7 +15,7 @@ namespace TaskManagementSystem
             routes.MapRoute(
                name: "leave",
                url: "Leave",
-               defaults: new { controller = "Leave", action = "Create", id = UrlParameter.Optional }
+               defaults: new { controller = "Leave", action = "ViewTestModel", id = UrlParameter.Optional }
            );
             routes.MapRoute(
                 name: "Default",

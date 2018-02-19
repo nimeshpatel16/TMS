@@ -4,7 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using TMS.DataTransferObject;
-
+using TMS.DataAccessLayer;
+using TaskManagementSystem.Models;
 
 namespace TaskManagementSystem.Controllers
 {
@@ -28,16 +29,33 @@ namespace TaskManagementSystem.Controllers
         {
             return View();
         }
-
+        // GET: Leave/Create
+        public ActionResult ViewTestModel()
+        {
+            return View();
+        }
+        [HttpPost]
+        [ActionName("ClearData")]
+        public ActionResult ClearData(LeaveModel model)
+        {
+            return View();
+        }
         // POST: Leave/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        [ActionName("SaveData")]
+        public ActionResult Create(LeaveModel model)
         {
             try
-            {
+            {                
+                TestDAL d = new TestDAL();
+                
+                if(ModelState.IsValid)
+                {
+                    return RedirectToAction("Index","Home");
+                }
                 // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                return View("ViewTestModel");
+                
             }
             catch
             {

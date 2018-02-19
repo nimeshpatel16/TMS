@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TMS.DataAccessLayer
 {
-    class Class1
+    public class TestDAL
     {
     }
 }

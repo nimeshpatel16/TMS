@@ -8,10 +8,10 @@
 
 <h2>Create</h2>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("SaveData","Leave",FormMethod.Post))
 {
     @Html.AntiForgeryToken()
-
+    @Html.ValidationSummary(true)
     <div class="container">
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -52,6 +52,7 @@
                                             new SelectListItem{ Text="1st Half", Value = "2" },
                                             new SelectListItem{ Text="2nd Half", Value = "3" },
                                             }, new { @class = "selectpicker form-control" })
+
                         </div>
                     </div>
                 </div>
@@ -76,7 +77,8 @@
                     <div class="row">
                         <label class="control-label col-md-2 text-left">Reason For Leave:</label>
                         <div class="col-md-10">
-                            @Html.TextBoxFor(m => m.Title, "", new { @class = "form-control", id = "txttitle", maxlength = "100" })
+                            @Html.TextAreaFor(m => m.Reason, new { @class = "form-control", id = "txttitle", maxlength = "500" })
+                            @Html.ValidationMessageFor(m=>m.Reason)
                         </div>
                     </div>
                 </div>
@@ -86,8 +88,8 @@
                     <div>
 
 
-
-                        <button type="button" class="btn btn-primary right">Submit</button> &nbsp;
+                        <input type="submit" class="btn btn-primary right" value="Submit"/>
+                        @*<button type="button" class="btn btn-primary right">Submit</button> &nbsp;*@
                         <button type="button" class="btn btn-primary right">Cancel</button>
 
 
@@ -101,6 +103,12 @@
         </div>
 
     </div>
+    <script type="text/javascript">
+        function SaveData() {
+            alert("Hello");
+        }
+
+    </script>
 }
 
 @*<div>

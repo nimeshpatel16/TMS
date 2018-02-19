@@ -4,8 +4,8 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-
+using System.Web.Mvc;
+using System.ComponentModel.DataAnnotations;
 namespace TMS.DataTransferObject
 {
     public class DTOLeaveMaster
@@ -19,10 +19,13 @@ namespace TMS.DataTransferObject
         public Int32 ProjectID { get; set; }    
         public string ResourceName { get; set; }
         public string Title { get; set; }
+        [Required(ErrorMessage ="Start date is required")]
         public DateTime StartDate { get; set; }
+        [Required(ErrorMessage = "End date is required")]
         public DateTime EndDate { get; set; }
         public bool IsStartHalf { get; set; }
         public bool IsEndHalf { get; set; }
+        [Required(ErrorMessage = "Reason text cannot be blank")]
         public string Reason { get; set; }
         public Int32 LeaveType { get; set; }
         public string LeaveTypeDescription { get; set; }
