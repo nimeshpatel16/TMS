@@ -11,7 +11,7 @@ namespace TMS.DataAccessLayer
 {
     public class SqlHelper
     {
-        string strConnectionString = ConfigurationManager.ConnectionStrings["TMSConnectionString"] != null ? ConfigurationManager.ConnectionStrings["API_ConnectionString"].ConnectionString : string.Empty;
+        string strConnectionString = ConfigurationManager.ConnectionStrings["TMSConnectionString"].ConnectionString;
         SqlConnection sqlcon;
         SqlCommand sqlcmd;
         DataSet ds;
@@ -49,6 +49,10 @@ namespace TMS.DataAccessLayer
 
         }
 
+        internal void AddParameter(string v, object resourceID)
+        {
+            throw new NotImplementedException();
+        }
 
         public void CloseConnection()
         {

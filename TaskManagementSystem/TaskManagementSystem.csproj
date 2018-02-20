@@ -389,7 +389,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -423,8 +425,8 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Leave\Create.cshtml" />
     <Content Include="Views\Shared\_DashboardLayoutPage.cshtml" />
+    <Content Include="Views\Leave\AddLeaves.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -437,6 +439,10 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\01-TMS.DataTransferObject\01-TMS.DataTransferObject.csproj">
+      <Project>{414e44d2-8fdb-4434-836f-efb88f61d70e}</Project>
+      <Name>01-TMS.DataTransferObject</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TMSDAL\02-TMS.DataAccessLayer.csproj">
       <Project>{81170813-072d-447b-a0d5-6e4259fa20b5}</Project>
       <Name>02-TMS.DataAccessLayer</Name>

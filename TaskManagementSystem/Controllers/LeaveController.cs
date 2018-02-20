@@ -3,13 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using TMS.DataAccessLayer;
+using TMS.DataAccessLayer.Leaves;
+using TMS.DataTransferObject;
 using TaskManagementSystem.Models.CustomClass;
+
 
 namespace TaskManagementSystem.Controllers
 {
     public class LeaveController : Controller
     {
+        public object DTOLeaveMaster { get; private set; }
+
         // GET: Leave
         public ActionResult Index()
         {
@@ -24,7 +28,7 @@ namespace TaskManagementSystem.Controllers
         }
 
         // GET: Leave/Create
-        public ActionResult Create()
+        public ActionResult AddLeaves()
         {
             return View();
         }
@@ -33,28 +37,40 @@ namespace TaskManagementSystem.Controllers
         [ActionName("ClearData")]
         public ActionResult ClearData(LeaveModel model)
         {
-            return View();
+            ModelState.Clear();
+            return View("AddLeaves");
         }
         // POST: Leave/Create
         [HttpPost]
         [ActionName("SaveData")]
-        public ActionResult Create(LeaveModel model)
+        public ActionResult SaveRecords(FormCollection form,LeaveModel model)
         {
             try
-            {                
-                TestDAL d = new TestDAL();
+            {
+                DTOLeaveMaster DTOLeave = new DTOLeaveMaster();
+                DTOLeave.ResourceName = model.ResourceName;
+                DTOLeave.LeaveType = Convert.ToInt32(form["ddlLeaveType"].ToString());
+                DTOLeave.StartDate = model.StartDate;
+                DTOLeave.EndDate = model.EndDate;
+                DTOLeave.IsStartHalf = true;
+                DTOLeave.IsEndHalf = true;
+                DTOLeave.Reason = model.Reason;
                 
-                if(ModelState.IsValid)
+                
+
+                if (ModelState.IsValid)
                 {
+                    LevesDAL levesdal = new LevesDAL();
+                    levesdal.Saveleaves(DTOLeave);
                     return RedirectToAction("Index","Home");
                 }
-                // TODO: Add insert logic here
-                return View("ViewTestModel");
+               
+                return View("AddLeaves");
                 
             }
             catch
             {
-                return View();
+                return View("AddLeaves");
             }
         }
 

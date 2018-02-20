@@ -14,8 +14,8 @@ namespace TaskManagementSystem
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             routes.MapRoute(
                name: "leave",
-               url: "Leave",
-               defaults: new { controller = "Leave", action = "Create", id = UrlParameter.Optional }
+               url: "Leave/SaveData",
+               defaults: new { controller = "Leave", action = "SaveData", id = UrlParameter.Optional }
            );
             routes.MapRoute(
                 name: "Default",
