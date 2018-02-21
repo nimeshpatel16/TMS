@@ -10,7 +10,8 @@ namespace TaskManagementSystem
         {
          
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
+                        "~/Scripts/jquery-{version}.js",
+                        "~/Scripts/jquery-3.0.0.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
                         "~/Scripts/jquery-ui-{version}.js"));
@@ -27,9 +28,20 @@ namespace TaskManagementSystem
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/dataTables").Include(
+              "~/Scripts/DataTables/jquery.dataTables.js",
+              "~/Scripts/DataTables/dataTables.bootstrap.js"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      "~/Content/bootstrap.min.css",
+                      "~/Content/DataTables/css/dataTables.bootstrap.min.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new StyleBundle("~/Content/dataTables").Include(
+                     "~/Content/DataTables/css/jquery.dataTables.css",
+                     "~/Content/DataTables/css/jquery.dataTables.min.css"));
+
             bundles.Add(new StyleBundle("~/Content/jqueryui").Include("~/Content/themes/base/all.css"));
         }
 }
