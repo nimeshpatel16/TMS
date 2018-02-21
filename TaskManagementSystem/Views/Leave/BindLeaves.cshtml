@@ -1,0 +1,202 @@
+﻿@model IEnumerable<TaskManagementSystem.Models.CustomClass.LeaveModel>
+
+@{
+    ViewBag.Title = "BindLeaves";
+    Layout = "~/Views/Shared/_DashboardLayoutPage.cshtml";
+}
+
+<h2>BindLeaves</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        @*<th>
+            @Html.DisplayNameFor(model => model.LeaveId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ResourceID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProjectID)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.ResourceName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StartDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EndDate)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.IsStartHalf)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsEndHalf)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.Reason)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LeaveType)
+        </th>
+        @*<th>
+        @Html.DisplayNameFor(model => model.LeaveTypeDescription)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.AppliedLeaveCount)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.LeaveBalance)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.Balance)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.Status)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.EmailToHR)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.EmailToEmp)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.StatusName)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.Comment)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.Description)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.CreatedBy)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.CreatedDate)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.LastModifiedBy)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.LastModifiedByName)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.LastModifiedDate)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.Search_PageIndex)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.Search_PageSize)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.TotalRowCount)
+    </th>*@
+        <th> Action </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.LeaveId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ResourceID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProjectID)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.ResourceName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StartDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EndDate)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.IsStartHalf)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsEndHalf)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.Reason)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LeaveType)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.LeaveTypeDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AppliedLeaveCount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LeaveBalance)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Balance)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmailToHR)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmailToEmp)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StatusName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Comment)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastModifiedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastModifiedByName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastModifiedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Search_PageIndex)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Search_PageSize)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalRowCount)
+        </td>*@
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Data;
+using System.Collections;
 
 namespace TMS.DataAccessLayer
 {
@@ -16,6 +17,9 @@ namespace TMS.DataAccessLayer
         SqlCommand sqlcmd;
         DataSet ds;
         SqlDataReader sqlReader;
+        DataTable dt;
+
+        public ArrayList paramList = new ArrayList();
 
         public SqlHelper()
         {
@@ -49,11 +53,16 @@ namespace TMS.DataAccessLayer
 
         }
 
-        internal void AddParameter(string v, object resourceID)
+        public void AddParameter(IDataParameter param)
         {
-            throw new NotImplementedException();
+            sqlcmd.Parameters.Add(param);
         }
-
+        public void AddParameter(string paramname, object paramvalue)
+        {
+            Parameter buildParameter = null;
+            buildParameter = new Parameter(paramname, paramvalue);
+            paramList.Add(buildParameter);
+        }
         public void CloseConnection()
         {
             if (sqlcon.State == ConnectionState.Open)
@@ -68,6 +77,36 @@ namespace TMS.DataAccessLayer
                 }
             }
         }
+
+        #region DataTable Method
+        public DataTable ExecuteDataTable(string strSpName, SqlParameter[] arrSqlParam)
+        {
+            try
+            {
+                OpenConnection();
+                dt = new DataTable();
+                sqlcmd = new SqlCommand();
+                sqlcmd.Connection = sqlcon;
+                sqlcmd.CommandType = CommandType.StoredProcedure;
+                sqlcmd.CommandText = strSpName;
+
+                if (arrSqlParam != null)
+                    sqlcmd.Parameters.AddRange(arrSqlParam);
+
+                SqlDataAdapter sqladp = new SqlDataAdapter(sqlcmd);
+                sqladp.Fill(dt);
+                return dt;
+            }
+            catch (Exception exp)
+            {
+                throw exp;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+        #endregion
 
         #region DataSet Methods
         public DataSet ExecuteDataSet(SqlCommand cmd)
@@ -643,5 +682,70 @@ namespace TMS.DataAccessLayer
         }
 
         #endregion
+
+        public class Parameter
+        {
+            public string ParameterName;
+            public object ParameterValue;
+            public int ParameterSize;
+            public ParameterDirection ParameterDirectionUsed;
+
+            /// <summary>
+            /// Overloaded constructor of Parameter class
+            /// </summary>
+            /// <param name="passedParameterName"></param>
+            /// <param name="passedValue"></param>
+            public Parameter(string passedParameterName, object passedValue)
+            {
+
+                ParameterName = passedParameterName;
+                ParameterValue = passedValue;
+                ParameterDirectionUsed = ParameterDirection.Input;
+            }
+
+            /// <summary>
+            /// Overloaded constructor of Parameter class
+            /// </summary>
+            /// <param name="passedParameterName"></param>
+            /// <param name="passedValue"></param>
+            /// <param name="passedSize"></param>
+            public Parameter(string passedParameterName, object passedValue, int passedSize)
+            {
+
+                ParameterName = passedParameterName;
+                ParameterValue = passedValue;
+                ParameterSize = passedSize;
+                ParameterDirectionUsed = ParameterDirection.Input;
+            }
+
+            /// <summary>
+            /// Overloaded constructor of Parameter class
+            /// </summary>
+            /// <param name="passedParameterName"></param>
+            /// <param name="passedValue"></param>
+            /// <param name="passedDirection"></param>
+            public Parameter(string passedParameterName, object passedValue, ParameterDirection passedDirection)
+            {
+
+                ParameterName = passedParameterName;
+                ParameterValue = passedValue;
+                ParameterDirectionUsed = passedDirection;
+            }
+
+            /// <summary>
+            /// Constructor of the Parameter class
+            /// </summary>
+            /// <param name="passedParameterName"></param>
+            /// <param name="passedValue"></param>
+            /// <param name="passedSize"></param>
+            /// <param name="passedDirection"></param>
+            public Parameter(string passedParameterName, object passedValue, int passedSize, ParameterDirection passedDirection)
+            {
+                ParameterName = passedParameterName;
+                ParameterValue = passedValue;
+                ParameterSize = passedSize;
+                ParameterDirectionUsed = passedDirection;
+            }
+        }
     }
 }

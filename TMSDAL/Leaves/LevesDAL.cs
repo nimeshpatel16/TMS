@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TMS.DataTransferObject;
+using System.Data;
 
 
 namespace TMS.DataAccessLayer.Leaves
@@ -43,6 +44,20 @@ namespace TMS.DataAccessLayer.Leaves
             {
                 
             }
+        }
+
+        public IList<DTOLeaveMaster> GetLeaveList(DTOLeaveMaster dtoLeaveMaster)
+        {
+            List<DTOLeaveMaster> dtoLeave = new List<DTOLeaveMaster>();
+            DataSet dsEmployee = new DataSet();
+            SqlHelper sqlHelper = new SqlHelper();
+            SqlParameter[] param = new SqlParameter[1];
+            if (dtoLeaveMaster.ResourceID > 0)
+            {
+                param[0] = new SqlParameter("@ResourceID", dtoLeaveMaster.ResourceID);
+            }
+            return CollectionHelper.ConvertTo<DTOLeaveMaster>(sqlHelper.ExecuteDataTable("usp_GetLeaveHistory", null));
+
         }
     }
 }

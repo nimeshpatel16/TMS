@@ -6,12 +6,14 @@ using System.Web.Mvc;
 using TMS.DataAccessLayer.Leaves;
 using TMS.DataTransferObject;
 using TaskManagementSystem.Models.CustomClass;
-
+using AutoMapper;
 
 namespace TaskManagementSystem.Controllers
 {
     public class LeaveController : Controller
     {
+        
+
         public object DTOLeaveMaster { get; private set; }
 
         // GET: Leave
@@ -26,7 +28,24 @@ namespace TaskManagementSystem.Controllers
             
             return View();
         }
-
+        [ActionName("BindLeaves")]
+        public ActionResult GetLeavesByResouces(LeaveModel model)
+        {
+            LevesDAL leaveDAL = new LevesDAL();
+            DTOLeaveMaster DTOLeave = new DTOLeaveMaster();
+            List<DTOLeaveMaster> dtoList = new List<TMS.DataTransferObject.DTOLeaveMaster>();
+            DTOLeave.ResourceID = model.ResourceID;
+            dtoList= leaveDAL.GetLeaveList(DTOLeave).ToList();
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<DTOLeaveMaster, LeaveModel>();
+              
+            });
+            config.AssertConfigurationIsValid();
+             var mapper= config.CreateMapper();
+            List<LeaveModel> lstModel = mapper.Map<List<DTOLeaveMaster>, List<LeaveModel>>(dtoList);
+            return View(lstModel);
+        }
         // GET: Leave/Create
         public ActionResult AddLeaves()
         {
@@ -47,19 +66,17 @@ namespace TaskManagementSystem.Controllers
         {
             try
             {
-                DTOLeaveMaster DTOLeave = new DTOLeaveMaster();
-                DTOLeave.ResourceName = model.ResourceName;
-                DTOLeave.LeaveType = Convert.ToInt32(form["ddlLeaveType"].ToString());
-                DTOLeave.StartDate = model.StartDate;
-                DTOLeave.EndDate = model.EndDate;
-                DTOLeave.IsStartHalf = true;
-                DTOLeave.IsEndHalf = true;
-                DTOLeave.Reason = model.Reason;
-                
-                
-
                 if (ModelState.IsValid)
                 {
+                    DTOLeaveMaster DTOLeave = new DTOLeaveMaster();
+                    DTOLeave.ResourceName = model.ResourceName;
+                    DTOLeave.LeaveType = Convert.ToInt32(form["ddlLeaveType"].ToString());
+                    DTOLeave.StartDate = model.StartDate;
+                    DTOLeave.EndDate = model.EndDate;
+                    DTOLeave.IsStartHalf = true;
+                    DTOLeave.IsEndHalf = true;
+                    DTOLeave.Reason = model.Reason;
+
                     LevesDAL levesdal = new LevesDAL();
                     levesdal.Saveleaves(DTOLeave);
                     return RedirectToAction("Index","Home");
